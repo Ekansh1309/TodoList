@@ -1,14 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 // Function to get data from local Storage
-function getLocalData(){
-    let newData= localStorage.getItem("TodoList")
-    const parsedData = JSON.parse(newData)
-    if(!Array.isArray(parsedData.tasks)){
-        return {tasks:[],val:1}
+function getLocalData() {
+    let newData = localStorage.getItem("TodoList");
+    if (!newData) {
+        // No data found in localStorage
+        return { tasks: [], val: 1 };
     }
-    else return parsedData
+    
+    try {
+        const parsedData = JSON.parse(newData);
+        if (parsedData && Array.isArray(parsedData.tasks) && parsedData.tasks.length > 0) {
+            // Data found in localStorage and tasks array is not empty
+            return parsedData;
+        } else {
+            // Empty tasks array
+            return { tasks: [], val: 1 };
+        }
+    } catch (error) {
+        // Error parsing JSON
+        console.error("Error parsing JSON:", error);
+        return { tasks: [], val: 1 };
+    }
 }
+
 
 // Task Slice 
 export const TasksSlice= createSlice({
