@@ -1,0 +1,44 @@
+/* write your css here */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+}
+
+/* body{
+    min-height: 100vh;
+    font-family: sans-serif;
+} */
+
+.tooltip {
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    z-index: 1;
+  }
+  
+  .highlighted-sentence {
+    position: relative;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  .imageSize{
+    width: 40px;
+  }
+  .positive-highlight {
+    background-color: #D9F2DD;
+  }
+  
+  .negative-highlight {
+    background-color: #F2DBD9;
+  }
+
+  .stars{
+    display: ruby;
+  }
